@@ -12,17 +12,17 @@ workflows:
         - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS, CM_KEY_PASSWORD)
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
       vars:
-        PACKAGE_NAME: "io.codemagic.expoapp" # <-- Put your package name here e.g. com.domain.myapp
-      node: 16.14.2
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
+        PACKAGE_NAME: "io.codemagic.marijan.expononejected" # <-- Put your package name here e.g. com.domain.myapp
+#      node: 16.14.2
+#    triggering:
+#      events:
+#        - push
+#        - tag
+#        - pull_request
+#      branch_patterns:
+#        - pattern: develop
+#          include: true
+#          source: true
     scripts:
       - name: Install dependencies and Expo CLI, and eject app
         script: |
@@ -55,24 +55,24 @@ workflows:
       - android/app/build/outputs/**/*.aab
     publishing:
       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-      email:
-        recipients:
-          - user_1@example.com
-          - user_2@example.com
-        notify:
-          success: true     # To not receive a notification when a build succeeds
-          failure: false    # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: '#channel-name'
-        notify_on_build_start: true   # To receive a notification when a build starts
-        notify:
-          success: true               # To not receive a notification when a build succeeds
-          failure: false              # To not receive a notification when a build fails
+#      email:
+#        recipients:
+#          - user_1@example.com
+#          - user_2@example.com
+#        notify:
+#          success: true     # To not receive a notification when a build succeeds
+#          failure: false    # To not receive a notification when a build fails
+#      slack:
+#        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+#        channel: '#channel-name'
+#        notify_on_build_start: true   # To receive a notification when a build starts
+#        notify:
+#          success: true               # To not receive a notification when a build succeeds
+#          failure: false              # To not receive a notification when a build fails
       google_play:
         # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: alpha   # Any default or custom track that is not in ‘draft’ status
+        track: internal   # Any default or custom track that is not in ‘draft’ status
 #  react-native-ios:
 #    name: React Native iOS
 #    max_build_duration: 120
