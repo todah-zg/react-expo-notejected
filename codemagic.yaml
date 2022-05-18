@@ -5,7 +5,7 @@ workflows:
   react-native-android:
     name: React Native Android
     max_build_duration: 120
-    instance_type: linux_x2
+    #instance_type: linux_x2
     environment:
       groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
